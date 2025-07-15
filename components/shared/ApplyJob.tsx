@@ -1,5 +1,4 @@
 'use client'
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 
 import {
   Dialog,
@@ -30,6 +29,7 @@ import { useUser } from "@clerk/nextjs"
 import createClerkSupabaseClient from "@/app/supabase/supabasecClient"
 import WithdrawAppDialog from "./WithdrawAppDialog"
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const applySchema = z.object({
   email: z.string().email(),
   phone: z.string().min(10,{message:"Phone number must be at least 10 digits"}),

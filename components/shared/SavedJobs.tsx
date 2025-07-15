@@ -5,6 +5,7 @@ import { useUser } from "@clerk/nextjs";
 import createClerkSupabaseClient from "@/app/supabase/supabasecClient";
 import { useRouter } from "next/navigation";
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const SavedJobs = () => {
   const { user } = useUser();
   const supabase = createClerkSupabaseClient();

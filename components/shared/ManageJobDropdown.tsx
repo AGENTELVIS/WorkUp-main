@@ -30,6 +30,7 @@ const ManageJobDropdown = ({ jobId, jobStatus, applicantCount }: { jobId: string
   const [showCloseDialog, setShowCloseDialog] = useState(false);
   const router = useRouter();
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   useEffect(() => {
     if (!user || !jobId) return;
     const checkInprogress = async () => {

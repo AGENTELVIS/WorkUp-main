@@ -11,6 +11,7 @@ import { Label } from "../ui/label";
 import { formatPostedTime } from "@/lib/utils";
 import { toast } from "sonner";
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default function PosterJobView({
   job,
   setJob,

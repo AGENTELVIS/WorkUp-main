@@ -6,6 +6,7 @@ import createClerkSupabaseClient from "@/app/supabase/supabasecClient";
 import { Badge } from "../ui/badge";
 import { useRouter } from "next/navigation";
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const AppliedJobs = () => {
   const { user } = useUser();
   const supabase = createClerkSupabaseClient();

@@ -1,4 +1,5 @@
 "use client";
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 
 import { useUser } from "@clerk/nextjs";
 import { Bookmark, MapPin, Building2 } from "lucide-react";

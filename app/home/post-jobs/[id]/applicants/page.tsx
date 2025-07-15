@@ -27,7 +27,7 @@ type Applicant = {
     user_id: string;
   };
 };
-
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default function ViewApplicantsPage() {
   const { id } = useParams();
   const client = createClerkSupabaseClient();

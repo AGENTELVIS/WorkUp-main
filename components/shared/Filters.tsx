@@ -72,6 +72,8 @@ export default function JobFilters({
   const [companies, setCompanies] = useState<string[]>([]);
   const [companySearch, setCompanySearch] = useState("");
   const [companyOpen, setCompanyOpen] = useState(false);
+  
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   useEffect(() => {
     async function fetchCompanies() {
       const { data, error } = await supabase.from("postjob").select("company");

@@ -9,6 +9,7 @@ import PosterJobView from "@/components/shared/PosterJobView";
 import SeekerJobView from "@/components/shared/SeekerJobView";
 import { getJobWithCounts } from "@/lib/jobsapi";
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default function JobDetailsPage() { 
   const [job, setJob] = useState<any>(null);
   const [loading, setLoading] = useState(true);

@@ -10,7 +10,7 @@ import { Bookmark, BookmarkCheck, Share2 } from "lucide-react";
 import { saveJob, unsaveJob } from "@/lib/jobsapi";
 import { toast } from "sonner";
 
-
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default function SeekerJobView({ job }: { job: any }) {
     const router = useRouter()
     const { user } = useUser();

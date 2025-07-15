@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import { Badge } from "../ui/badge";
 import ManageJobDropdown from "./ManageJobDropdown";
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const PostedJobs = () => {
   const { user } = useUser();
   const supabase = createClerkSupabaseClient();

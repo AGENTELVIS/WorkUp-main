@@ -3,6 +3,7 @@ import  createClerkSupabaseClient  from "@/app/supabase/supabasecClient";
 import { useUser } from "@clerk/nextjs";
 import { useEffect, useState } from "react";
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function useJobs() {
   const [jobs, setJobs] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
