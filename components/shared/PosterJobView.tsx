@@ -1,11 +1,11 @@
 import { useRouter } from "next/navigation";
 import { Button } from "../ui/button";
-import { Pencil, SquarePen } from "lucide-react";
+import { SquarePen } from "lucide-react";
 import { Share2 } from "lucide-react";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import createClerkSupabaseClient from "@/app/supabase/supabasecClient";
 import { useUser } from "@clerk/nextjs";
-import { useState } from "react";
+
 import { Switch } from "../ui/switch";
 import { Label } from "../ui/label";
 import { formatPostedTime } from "@/lib/utils";

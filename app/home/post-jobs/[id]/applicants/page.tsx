@@ -13,7 +13,6 @@ import { toast } from "sonner";
 import { formatPostedTime } from "@/lib/utils";
 import {
   AlertDialog,
-  AlertDialogTrigger,
   AlertDialogContent,
   AlertDialogHeader,
   AlertDialogFooter,

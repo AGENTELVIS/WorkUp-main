@@ -14,7 +14,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover"
 import { useUser } from "@clerk/nextjs"
-import { CheckIcon, ChevronDown, ChevronsUpDown } from "lucide-react"
+import { CheckIcon, ChevronDown } from "lucide-react"
 import  createClerkSupabaseClient  from "@/app/supabase/supabasecClient"
 import { cn } from "@/lib/utils"  
 

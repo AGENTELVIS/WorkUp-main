@@ -7,7 +7,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { Ellipsis, Pencil, Users } from 'lucide-react'
+import { Ellipsis, Pencil } from 'lucide-react'
 import createClerkSupabaseClient from '@/app/supabase/supabasecClient';
 import { useUser } from '@clerk/nextjs';
 import { useRouter } from 'next/navigation';

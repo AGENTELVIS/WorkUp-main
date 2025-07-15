@@ -4,7 +4,6 @@ import React, { useEffect, useState } from "react";
 import { useUser } from "@clerk/nextjs";
 import createClerkSupabaseClient from "@/app/supabase/supabasecClient";
 import { useRouter } from "next/navigation";
-import { Ellipsis, EllipsisVertical, Pencil, Users, Users2, UserSquare2 } from "lucide-react";
 import { Badge } from "../ui/badge";
 import ManageJobDropdown from "./ManageJobDropdown";
 

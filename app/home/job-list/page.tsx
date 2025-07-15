@@ -7,7 +7,6 @@ import React, { useEffect, useMemo, useState } from "react";
 import { useJobs, saveJob, unsaveJob } from "@/lib/jobsapi";
 import  createClerkSupabaseClient from "@/app/supabase/supabasecClient";
 import { useRouter, useSearchParams } from "next/navigation";
-import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip";
 import JobFilters, { JobFiltersState } from "@/components/shared/Filters";
 

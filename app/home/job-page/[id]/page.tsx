@@ -4,7 +4,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import  createClerkSupabaseClient  from "@/app/supabase/supabasecClient";
-import { ApplyJobDialog } from "@/components/shared/ApplyJob";
 import { useUser } from "@clerk/nextjs";
 import PosterJobView from "@/components/shared/PosterJobView";
 import SeekerJobView from "@/components/shared/SeekerJobView";

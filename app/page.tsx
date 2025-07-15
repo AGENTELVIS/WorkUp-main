@@ -6,16 +6,7 @@ import { useTheme } from "next-themes"
 import { useRouter } from "next/navigation";
 
 import { Button } from "@/components/ui/button"
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import Topbar from "../components/shared/Topbar"
-import { SignedIn, UserButton } from "@clerk/nextjs"
-import JobFilters, { JobFiltersState } from "@/components/shared/Filters";
-import { ChevronDown, ChevronUp } from "lucide-react";
+import  { JobFiltersState } from "@/components/shared/Filters";
 import { Briefcase, Search as SearchIcon } from "lucide-react";
 import Link from "next/link";
 

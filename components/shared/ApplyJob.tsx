@@ -10,8 +10,7 @@ import {
 } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { useForm, useFieldArray } from "react-hook-form"
+import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
 import { useState, useEffect } from "react"
@@ -28,7 +27,6 @@ import { Card, CardContent } from "@/components/ui/card"
 
 import { useUser } from "@clerk/nextjs"
 import createClerkSupabaseClient from "@/app/supabase/supabasecClient"
-import { User } from "@clerk/nextjs/server"
 import WithdrawAppDialog from "./WithdrawAppDialog"
 
 const applySchema = z.object({

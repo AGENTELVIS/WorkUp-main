@@ -4,7 +4,6 @@ import React, { useEffect, useState } from "react";
 import { useUser } from "@clerk/nextjs";
 import createClerkSupabaseClient from "@/app/supabase/supabasecClient";
 import { Badge } from "../ui/badge";
-import { cn } from "@/lib/utils";
 import { useRouter } from "next/navigation";
 
 const AppliedJobs = () => {

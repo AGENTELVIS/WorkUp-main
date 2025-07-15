@@ -3,10 +3,8 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { SignedIn, SignedOut, SignInButton, UserButton, useUser } from '@clerk/nextjs';
+import { useUser } from '@clerk/nextjs';
 import { Bookmark, Heart, Menu, Pencil, X } from 'lucide-react'; // Icons for the hamburger menu
-import { ModeToggle } from '../../app/page'; // Assuming this path is correct
-import { Button } from '../ui/button'; // Assuming you have a Button component from shadcn/ui
 import TopbarActions from './TopbarActions';
 
 const Topbar = () => {

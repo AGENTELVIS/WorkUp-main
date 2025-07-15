@@ -18,13 +18,9 @@ import { useRouter } from "next/navigation";
 import { redirect, useParams } from 'next/navigation'
 import ScreeningQuestions from "@/components/shared/ScreenQuestions";
 import { postSchema } from '@/lib/validation'
-import { Alert, AlertDescription, AlertTitle } from '../ui/alert'
 import { toast } from 'sonner'
-import { Variable } from 'lucide-react'
-import { toggleVariants } from '../ui/toggle'
 import { Card } from '@/components/ui/card';
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
-import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
 
 export default function PostJobForm() {
