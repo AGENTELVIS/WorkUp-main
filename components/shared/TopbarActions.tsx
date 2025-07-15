@@ -1,8 +1,8 @@
 "use client"
 
 import { SignedIn, SignedOut, SignInButton, UserButton } from '@clerk/nextjs';
-import { ModeToggle } from '../../app/page';
 import { useEffect, useState } from 'react';
+import { ModeToggle } from './ModeToggle';
 
 export default function TopbarActions() {
     const [isMounted, setIsMounted] = useState(false);
