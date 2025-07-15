@@ -46,6 +46,7 @@ const CompanySeletor = ({ value, onChange }: CompanySelectorProps) => {
     }, [user])
 
   return (
+    
     <div>
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
@@ -63,9 +64,13 @@ const CompanySeletor = ({ value, onChange }: CompanySelectorProps) => {
         <Command>
           <CommandInput placeholder="Search company..." />
           <CommandList>
-            <CommandEmpty>No Company found.</CommandEmpty>
-            <CommandGroup>
-              {Companies.map((company) => (
+            {loading ? (
+              <div className="px-4 py-2 text-sm text-muted-foreground">Loading...</div>
+            ) : Companies.length === 0 ? (
+              <CommandEmpty>No Company found.</CommandEmpty>
+            ) : (
+              <CommandGroup>
+                {Companies.map((company) => (
                   <CommandItem
                     key={company.id}
                     value={company.companyname}
@@ -76,17 +81,19 @@ const CompanySeletor = ({ value, onChange }: CompanySelectorProps) => {
                       setOpen(false);
                     }}
                   >
-                  <CheckIcon
-                    className={cn(
-                      "mr-2 h-4 w-4",
-                      value === company.companyname ? "opacity-100" : "opacity-0"
-                    )}
-                  />
-                  {company.companyname}
-                </CommandItem>
-              ))}
-            </CommandGroup>
+                    <CheckIcon
+                      className={cn(
+                        "mr-2 h-4 w-4",
+                        value === company.companyname ? "opacity-100" : "opacity-0"
+                      )}
+                    />
+                    {company.companyname}
+                  </CommandItem>
+                ))}
+              </CommandGroup>
+            )}
           </CommandList>
+
         </Command>
       </PopoverContent>
     </Popover></div>

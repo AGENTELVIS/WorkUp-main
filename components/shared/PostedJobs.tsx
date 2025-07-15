@@ -11,6 +11,7 @@ import ManageJobDropdown from "./ManageJobDropdown";
 const PostedJobs = () => {
   const { user } = useUser();
   const supabase = useClerkSupabaseClient();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [jobs, setJobs] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const router = useRouter();

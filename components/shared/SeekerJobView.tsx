@@ -66,9 +66,11 @@ export default function SeekerJobView({ job }: { job: any }) {
           setIsSaved(true);
           toast.success("Job saved!");
         }
-      } catch (_err) {
+      } catch (err) {
+        console.error("Save failed:", err);
         toast.error("Failed to update saved jobs.");
-      } finally {
+      }
+        finally {
         setSaving(false);
       }
     }
