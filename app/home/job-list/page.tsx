@@ -1,5 +1,4 @@
 "use client";
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 
 import { useUser } from "@clerk/nextjs";
 import { Bookmark, MapPin, Building2 } from "lucide-react";
@@ -10,6 +9,22 @@ import  createClerkSupabaseClient from "@/app/supabase/supabasecClient";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Tooltip, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip";
 import JobFilters, { JobFiltersState } from "@/components/shared/Filters";
+
+// Define Job type based on Supabase postjob table
+export type Job = {
+  id: number;
+  created_at: string;
+  title: string;
+  company: string;
+  location: string;
+  jobtype: string;
+  workplace: string;
+  user_id: string | null;
+  jobdesc?: string | null;
+  openings?: number | null;
+  screeningquestions?: any[] | null; // You may want to define a more specific type
+  status: string;
+};
 
 const Joblist = () => {
   const { user } = useUser();
@@ -33,7 +48,7 @@ const Joblist = () => {
       setFilters((prev) => ({ ...prev, search: searchQ }));
     }
     // eslint-disable-next-line
-  }, []);
+  }, [searchParams, filters.search]);
 
   useEffect(() => {
     if (!user) return;
@@ -43,11 +58,11 @@ const Joblist = () => {
         .select("job_id")
         .eq("user_id", user.id);
       if (!error && data) {
-        setSavedJobs(data.map((row: any) => row.job_id));
+        setSavedJobs(data.map((row: { job_id: number }) => row.job_id));
       }
     };
     fetchSaved();
-  }, [user]);
+  }, [user, supabase]);
 
   const handleClick = (id: number) => {
     router.push(`/home/job-page/${id}`);
@@ -73,22 +88,22 @@ const Joblist = () => {
     }
   }
   const filteredJobs = useMemo(() => {
-    return jobs
-      .filter((job: any) => job.user_id !== user?.id)
-      .filter((job: any) => job.status !== "closed")
-      .filter((job: any) =>
+    return (jobs as Job[])
+      .filter((job) => job.user_id !== user?.id)
+      .filter((job) => job.status !== "closed")
+      .filter((job) =>
         job.title.toLowerCase().includes(filters.search.toLowerCase())
       )
-      .filter((job: any) =>
+      .filter((job) =>
         filters.company ? job.company === filters.company : true
       )
-      .filter((job: any) =>
+      .filter((job) =>
         filters.location ? job.location === filters.location : true
       )
-      .filter((job: any) =>
+      .filter((job) =>
         filters.jobtype.length > 0 ? filters.jobtype.includes(job.jobtype) : true
       )
-      .filter((job: any) =>
+      .filter((job) =>
         filters.workplace ? job.workplace === filters.workplace : true
       );
   }, [jobs, filters, user?.id]);
@@ -103,8 +118,8 @@ const Joblist = () => {
           {!loading && filteredJobs.length === 0 && <p className="text-gray-600 dark:text-gray-300">No jobs found.</p>}
 
           {!loading &&
-            filteredJobs.filter((job: any) => job.user_id !== user?.id).filter((job: any) => job.status !== 'closed')
-            .map((job: any) => (
+            filteredJobs.filter((job) => job.user_id !== user?.id).filter((job) => job.status !== 'closed')
+            .map((job) => (
               <div key={job.id} className="border-b dark:border-zinc-800 last:border-b-0 pb-3 mb-3 last:mb-0">
                 <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center cursor-pointer gap-2 sm:gap-0">
                   <div className="flex-1" onClick={() => handleClick(job.id)}>

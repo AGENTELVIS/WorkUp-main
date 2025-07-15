@@ -6,7 +6,6 @@ import { useTheme } from "next-themes"
 import { useRouter } from "next/navigation";
 
 import { Button } from "@/components/ui/button"
-import  { JobFiltersState } from "@/components/shared/Filters";
 import { Briefcase, Search as SearchIcon } from "lucide-react";
 import Link from "next/link";
 
@@ -30,7 +29,7 @@ export function ModeToggle() {
 
 // Default filter state
 
-const page = () => {
+const Page = () => {
   const [search, setSearch] = React.useState("");
   const router = useRouter();
 
@@ -85,4 +84,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

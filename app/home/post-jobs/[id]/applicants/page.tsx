@@ -22,16 +22,28 @@ import {
   AlertDialogCancel,
 } from "@/components/ui/alert-dialog";
 
-type Applicant = {
-  postjob: {
+// Define Applicant type based on Supabase applications table
+export type ApplicantType = {
+  id: number;
+  created_at: string;
+  email: string;
+  phone?: number | null;
+  resume_path: string;
+  job_id: number;
+  user_id: string;
+  answers?: any[] | null;
+  status: string;
+  withdraw_reason?: string | null;
+  postjob?: {
     user_id: string;
   };
+  signedUrl?: string | null;
 };
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+
 export default function ViewApplicantsPage() {
   const { id } = useParams();
   const client = createClerkSupabaseClient();
-  const [applicants, setApplicants] = useState<any[]>([]);
+  const [applicants, setApplicants] = useState<ApplicantType[]>([]);
   const [loading, setLoading] = useState(true);
   const {user} = useUser()
   
@@ -85,7 +97,7 @@ export default function ViewApplicantsPage() {
         setLoading(false);
         return;
       }
-      const typedData = data as Applicant[];
+      const typedData = data as ApplicantType[];
 
       if (typedData[0]?.postjob?.user_id !== user?.id) {
         toast.error("Access Denied", {
@@ -112,12 +124,12 @@ export default function ViewApplicantsPage() {
         })
       );
 
-      setApplicants(applicantsWithUrls);
+      setApplicants(applicantsWithUrls as ApplicantType[]);
       setLoading(false);
     };
 
     fetchApplicants();
-  }, [id,user]);
+  }, [id, user, client, router]);
 
   if (loading) return <p>Loading applicants...</p>;
 

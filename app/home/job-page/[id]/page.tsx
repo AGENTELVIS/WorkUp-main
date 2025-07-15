@@ -9,9 +9,32 @@ import PosterJobView from "@/components/shared/PosterJobView";
 import SeekerJobView from "@/components/shared/SeekerJobView";
 import { getJobWithCounts } from "@/lib/jobsapi";
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+// Define Job type based on Supabase postjob table
+export type Job = {
+  id: number;
+  created_at: string;
+  title: string;
+  company: string;
+  location: string;
+  jobtype: string;
+  workplace: string;
+  user_id: string | null;
+  jobdesc?: string | null;
+  openings?: number | null;
+  screeningquestions?: any[] | null; // You may want to define a more specific type
+  status: string;
+  applicantCount?: number;
+  savedCount?: number;
+};
+
+export type JobWithSettings = Job & {
+  settings: {
+    auto_close: boolean | null;
+  };
+};
+
 export default function JobDetailsPage() { 
-  const [job, setJob] = useState<any>(null);
+  const [job, setJob] = useState<JobWithSettings | null>(null);
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
   const supabase = createClerkSupabaseClient();
