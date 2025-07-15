@@ -3,7 +3,7 @@
 import { useUser } from "@clerk/nextjs";
 import { Bookmark, MapPin, Building2 } from "lucide-react";
 import { Card } from "@/components/ui/card";
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState, Suspense } from "react";
 import { useJobs, saveJob, unsaveJob } from "@/lib/jobsapi";
 import { useClerkSupabaseClient } from "@/app/supabase/supabasecClient";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -26,7 +26,7 @@ export type Job = {
   status: string;
 };
 
-const Joblist = () => {
+const JoblistContent = () => {
   const { user } = useUser();
   const { jobs, loading } = useJobs();
   const supabase = useClerkSupabaseClient();
@@ -157,5 +157,10 @@ const Joblist = () => {
   );
 };
 
+const Joblist = () => (
+  <Suspense fallback={<div>Loading...</div>}>
+    <JoblistContent />
+  </Suspense>
+);
 
 export default Joblist;
