@@ -31,7 +31,7 @@ export type ApplicantType = {
   resume_path: string;
   job_id: number;
   user_id: string;
-  answers?: any[] | null;
+  answers?: string[] | null;
   status: string;
   withdraw_reason?: string | null;
   postjob?: {

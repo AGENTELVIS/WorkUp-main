@@ -9,6 +9,7 @@ import { useRouter } from "next/navigation";
 const SavedJobs = () => {
   const { user } = useUser();
   const supabase = createClerkSupabaseClient();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [jobs, setJobs] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const router = useRouter();

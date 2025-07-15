@@ -16,6 +16,7 @@ export default function PosterJobView({
   job,
   setJob,
 }: {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   job: any;
   setJob: (job: any) => void;
 }) {

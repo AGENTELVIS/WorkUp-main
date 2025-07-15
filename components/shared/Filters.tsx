@@ -78,6 +78,7 @@ export default function JobFilters({
     async function fetchCompanies() {
       const { data, error } = await supabase.from("postjob").select("company");
       if (!error && data) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const unique = Array.from(new Set(data.map((row: any) => row.company).filter(Boolean)));
         setCompanies(unique);
       }

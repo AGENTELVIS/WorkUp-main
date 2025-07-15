@@ -22,7 +22,7 @@ export type Job = {
   user_id: string | null;
   jobdesc?: string | null;
   openings?: number | null;
-  screeningquestions?: any[] | null; // You may want to define a more specific type
+  screeningquestions?: string[] | null; // You may want to define a more specific type
   status: string;
 };
 

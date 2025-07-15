@@ -2,7 +2,6 @@
 "use client"
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 import { useUser } from '@clerk/nextjs';
 import { Bookmark, Heart, Menu, Pencil, X } from 'lucide-react'; // Icons for the hamburger menu
 import TopbarActions from './TopbarActions';

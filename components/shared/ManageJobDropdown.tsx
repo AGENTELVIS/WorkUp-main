@@ -39,6 +39,7 @@ const ManageJobDropdown = ({ jobId, jobStatus, applicantCount }: { jobId: string
         .select("status")
         .eq("job_id", jobId);
       if (!error && data) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         setHasInprogress(data.some((a: any) => a.status === "inprogress"));
       }
     };
