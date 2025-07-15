@@ -2,7 +2,7 @@ import { useRouter } from "next/navigation";
 import { Button } from "../ui/button";
 import { SquarePen } from "lucide-react";
 import { Share2 } from "lucide-react";
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import createClerkSupabaseClient from "@/app/supabase/supabasecClient";
 import { useUser } from "@clerk/nextjs";
 

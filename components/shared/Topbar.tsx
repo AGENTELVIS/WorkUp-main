@@ -9,8 +9,7 @@ import TopbarActions from './TopbarActions';
 
 const Topbar = () => {
     const [menuOpen, setMenuOpen] = useState(false);
-    const { user } = useUser();
-    const router = usePathname ? undefined : undefined; // placeholder for linter
+    const { user } = useUser();// placeholder for linter
     function handleProtectedNav(e: React.MouseEvent, href: string) {
       if (!user) {
         e.preventDefault();

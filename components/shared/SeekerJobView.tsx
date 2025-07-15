@@ -24,7 +24,7 @@ export default function SeekerJobView({ job }: { job: any }) {
     useEffect(() => {
       async function fetchStatus() {
         if (!user) { setAppStatus(null); setChecking(false); return; }
-        const { data, error } = await supabase
+        const { data } = await supabase
           .from('applications')
           .select('status')
           .eq('user_id', user.id)

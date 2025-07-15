@@ -29,13 +29,6 @@ export function ModeToggle() {
 }
 
 // Default filter state
-const defaultFilters: JobFiltersState = {
-  search: "",
-  company: "",
-  location: "",
-  jobtype: [],
-  workplace: "",
-};
 
 const page = () => {
   const [search, setSearch] = React.useState("");

@@ -35,7 +35,7 @@ const PostedJobs = () => {
 
     const jobsWithApplicants = await Promise.all(
       jobs.map(async (job) => {
-        const { count, error: countError } = await supabase
+        const { count } = await supabase
           .from("applications")
           .select("*", { count: "exact", head: true })
           .eq("job_id", job.id);

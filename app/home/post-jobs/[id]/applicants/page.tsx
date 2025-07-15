@@ -8,7 +8,7 @@ import createClerkSupabaseClient from "@/app/supabase/supabasecClient";
 import { useUser } from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
 import { SquareArrowOutUpRightIcon } from "lucide-react";
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { toast } from "sonner";
 import { formatPostedTime } from "@/lib/utils";
 import {
@@ -101,7 +101,7 @@ export default function ViewApplicantsPage() {
         data.map(async (applicant) => {
           if (!applicant.resume_path) return applicant;
 
-          const { data: signed, error: signedError } = await client.storage
+          const { data: signed} = await client.storage
             .from("resume")
             .createSignedUrl(applicant.resume_path, 60); // 60 sec validity
 

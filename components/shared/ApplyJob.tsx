@@ -1,4 +1,5 @@
 'use client'
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 
 import {
   Dialog,
@@ -86,7 +87,7 @@ export function ApplyJobDialog({ jobId, screeningQuestions, disabled = false, on
     },
   });
 
-  const { register, handleSubmit, watch, formState: { errors }, reset } = form;
+  const { handleSubmit, reset } = form;
 
   const closeAndReset = () => {
     reset();

@@ -1,7 +1,6 @@
 "use client"
 import  createClerkSupabaseClient  from "@/app/supabase/supabasecClient";
 import { useUser } from "@clerk/nextjs";
-import { ParamValue } from "next/dist/server/request/params";
 import { useEffect, useState } from "react";
 
 export function useJobs() {

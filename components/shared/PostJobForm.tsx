@@ -4,7 +4,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
 import { Button } from '@/components/ui/button'
-import { Form,FormField, FormItem, FormLabel, FormControl, FormDescription, FormMessage } from '@/components/ui/form'
+import { Form,FormField, FormItem, FormLabel, FormControl, FormMessage } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { useForm } from 'react-hook-form'
 import { useUser } from '@clerk/nextjs'
@@ -12,7 +12,7 @@ import  createClerkSupabaseClient  from '@/app/supabase/supabasecClient'
 import CompanyDialog  from '@/components/shared/AddCompany'
 import RichTextEditor from '@/components/shared/Editor'
 import CompanySeletor from '@/components/shared/CompanySeletor'
-import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from '@/components/ui/select'
+import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import {State} from 'country-state-city'
 import { useRouter } from "next/navigation";
 import { redirect, useParams } from 'next/navigation'
@@ -31,7 +31,6 @@ export default function PostJobForm() {
   const isEditing = !!id;
   const hasFetched = useRef(false);
   const router = useRouter();
-  const [date,setDate] = useState<Date | undefined>(new Date())
   const [step, setStep] = useState(1); // Stepper state
 
   const form = useForm<z.infer<typeof postSchema>>({
@@ -68,7 +67,7 @@ export default function PostJobForm() {
       }
 
       // ✅ Check if job has applicants
-      const { count, error: countError } = await client
+      const { count } = await client
         .from("applications")
         .select("*", { count: "exact", head: true })
         .eq("job_id", id);
