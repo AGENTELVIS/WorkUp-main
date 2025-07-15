@@ -8,7 +8,7 @@ import { Form,FormField, FormItem, FormLabel, FormControl, FormMessage } from '@
 import { Input } from '@/components/ui/input'
 import { useForm } from 'react-hook-form'
 import { useUser } from '@clerk/nextjs'
-import  createClerkSupabaseClient  from '@/app/supabase/supabasecClient'
+import { useClerkSupabaseClient } from '@/app/supabase/supabasecClient'
 import CompanyDialog  from '@/components/shared/AddCompany'
 import RichTextEditor from '@/components/shared/Editor'
 import CompanySeletor from '@/components/shared/CompanySeletor'
@@ -26,7 +26,7 @@ import { cn } from '@/lib/utils';
 export default function PostJobForm() {
   const [content, setContent] = useState<string>("");
   const {user} = useUser()
-  const client = createClerkSupabaseClient()
+  const client = useClerkSupabaseClient();
   const { id } = useParams(); // job id
   const isEditing = !!id;
   const hasFetched = useRef(false);

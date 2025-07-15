@@ -15,7 +15,7 @@ import {
 } from "@/components/ui/popover"
 import { useUser } from "@clerk/nextjs"
 import { CheckIcon, ChevronDown } from "lucide-react"
-import  createClerkSupabaseClient  from "@/app/supabase/supabasecClient"
+import { useClerkSupabaseClient } from "@/app/supabase/supabasecClient"
 import { cn } from "@/lib/utils"  
 
 interface CompanySelectorProps {
@@ -27,8 +27,9 @@ const CompanySeletor = ({ value, onChange }: CompanySelectorProps) => {
     const {user} = useUser()
     const [loading, setLoading] = useState(true)
     //const [selectedCompany, setSelectedCompany] = useState<string>("")
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const [Companies,setCompanies] = useState<any[]>([])
-    const supabase = createClerkSupabaseClient()
+    const supabase = useClerkSupabaseClient();
     const [open, setOpen] = React.useState(false)
 
     useEffect(() => {

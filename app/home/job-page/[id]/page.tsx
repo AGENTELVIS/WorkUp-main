@@ -3,7 +3,7 @@
 
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
-import  createClerkSupabaseClient  from "@/app/supabase/supabasecClient";
+import { useClerkSupabaseClient } from "@/app/supabase/supabasecClient";
 import { useUser } from "@clerk/nextjs";
 import PosterJobView from "@/components/shared/PosterJobView";
 import SeekerJobView from "@/components/shared/SeekerJobView";
@@ -37,7 +37,7 @@ export default function JobDetailsPage() {
   const [job, setJob] = useState<JobWithSettings | null>(null);
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
-  const supabase = createClerkSupabaseClient();
+  const supabase = useClerkSupabaseClient();
   const { user, isLoaded } = useUser();
 
   useEffect(() => {

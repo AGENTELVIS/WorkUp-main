@@ -4,7 +4,7 @@ import { ApplyJobDialog } from "./ApplyJob";
 import { useUser } from "@clerk/nextjs";
 import { formatPostedTime } from "@/lib/utils";
 import { useState, useEffect } from "react";
-import createClerkSupabaseClient from "@/app/supabase/supabasecClient";
+import { useClerkSupabaseClient } from "@/app/supabase/supabasecClient";
 import { CircleAlert, CircleX } from "lucide-react";
 import { Bookmark, BookmarkCheck, Share2 } from "lucide-react";
 import { saveJob, unsaveJob } from "@/lib/jobsapi";
@@ -17,7 +17,7 @@ export default function SeekerJobView({ job }: { job: any }) {
     const isPoster = user?.id === job.user_id;
     const [appStatus, setAppStatus] = useState<string | null>(null);
     const [checking, setChecking] = useState(true);
-    const supabase = createClerkSupabaseClient();
+    const supabase = useClerkSupabaseClient();
     const [isSaved, setIsSaved] = useState(false);
     const [saving, setSaving] = useState(false);
 
@@ -66,7 +66,7 @@ export default function SeekerJobView({ job }: { job: any }) {
           setIsSaved(true);
           toast.success("Job saved!");
         }
-      } catch (err) {
+      } catch (_err) {
         toast.error("Failed to update saved jobs.");
       } finally {
         setSaving(false);

@@ -1,4 +1,4 @@
-import  createClerkSupabaseClient from '../../app/supabase/supabasecClient'
+import { useClerkSupabaseClient } from '../../app/supabase/supabasecClient'
 import { Button } from "@/components/ui/button"
 import {Form, FormControl, FormField, FormItem, FormLabel, FormMessage} from'@/components/ui/form'
 import {
@@ -26,7 +26,7 @@ const companySchema = z.object({
 
 const CompanyDialog = () => {
   const { user } = useUser();
-  const supabase = createClerkSupabaseClient()
+  const supabase = useClerkSupabaseClient();
 
   const form = useForm<z.infer<typeof companySchema>>({
     resolver: zodResolver(companySchema),

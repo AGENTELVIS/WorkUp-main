@@ -3,7 +3,7 @@ import { Button } from "../ui/button";
 import { SquarePen } from "lucide-react";
 import { Share2 } from "lucide-react";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
-import createClerkSupabaseClient from "@/app/supabase/supabasecClient";
+import { useClerkSupabaseClient } from "@/app/supabase/supabasecClient";
 import { useUser } from "@clerk/nextjs";
 
 import { Switch } from "../ui/switch";
@@ -18,9 +18,10 @@ export default function PosterJobView({
 }: {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   job: any;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   setJob: (job: any) => void;
 }) {
-  const supabase = createClerkSupabaseClient();
+  const supabase = useClerkSupabaseClient();
   const { user } = useUser();
   const router = useRouter();
 

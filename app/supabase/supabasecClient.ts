@@ -39,8 +39,3 @@ export function useClerkSupabaseClient() {
 
   return client;
 }
-
-// Default export for compatibility: use as a hook in React components
-export default function createClerkSupabaseClient() {
-  return useClerkSupabaseClient();
-}

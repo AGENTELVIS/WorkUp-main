@@ -7,7 +7,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { Ellipsis, Pencil } from 'lucide-react'
-import createClerkSupabaseClient from '@/app/supabase/supabasecClient';
+import { useClerkSupabaseClient } from '@/app/supabase/supabasecClient';
 import { useUser } from '@clerk/nextjs';
 import { useRouter } from 'next/navigation';
 import {
@@ -24,7 +24,7 @@ import { Button } from "@/components/ui/button";
 
 const ManageJobDropdown = ({ jobId, jobStatus, applicantCount }: { jobId: string, jobStatus: string, applicantCount: number }) => {
   const { user } = useUser();
-  const supabase = createClerkSupabaseClient();
+  const supabase = useClerkSupabaseClient();
   const [hasInprogress, setHasInprogress] = useState(false);
   const [showDeleteDialog, setShowDeleteDialog] = useState(false);
   const [showCloseDialog, setShowCloseDialog] = useState(false);

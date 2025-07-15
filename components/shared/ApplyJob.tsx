@@ -26,7 +26,7 @@ import {
 import { Card, CardContent } from "@/components/ui/card"
 
 import { useUser } from "@clerk/nextjs"
-import createClerkSupabaseClient from "@/app/supabase/supabasecClient"
+import { useClerkSupabaseClient } from "@/app/supabase/supabasecClient"
 import WithdrawAppDialog from "./WithdrawAppDialog"
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -50,7 +50,7 @@ export function ApplyJobDialog({ jobId, screeningQuestions, disabled = false, on
   onApplied?: () => void
 }) {
   const { user } = useUser();
-  const supabase = createClerkSupabaseClient();
+  const supabase = useClerkSupabaseClient();
   const [step, setStep] = useState(1);
   const [applied, setApplied] = useState(false);
   const [checking, setChecking] = useState(true);
@@ -65,7 +65,7 @@ export function ApplyJobDialog({ jobId, screeningQuestions, disabled = false, on
         setChecking(false);
         return;
       }
-      const { data, error } = await supabase
+      const { data } = await supabase
         .from('applications')
         .select('id')
         .eq('user_id', user.id)
@@ -157,7 +157,7 @@ export function ApplyJobDialog({ jobId, screeningQuestions, disabled = false, on
                   <div className="flex flex-col items-center justify-center py-8">
                     <CheckCircle2 className="text-green-500 mb-2" size={48} />
                     <div className="text-lg font-semibold text-green-700 mb-1">Application Submitted!</div>
-                    <div className="text-gray-500 text-sm">Thank you for applying. We'll notify you if you're shortlisted.</div>
+                    <div className="text-gray-500 text-sm">Thank you for applying. We ll notify you if you re shortlisted.</div>
                   </div>
                 ) : (
                   <Form {...form}>

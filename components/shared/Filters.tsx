@@ -9,7 +9,7 @@ import {
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { State } from "country-state-city";
-import createClerkSupabaseClient from "@/app/supabase/supabasecClient";
+import { useClerkSupabaseClient } from "@/app/supabase/supabasecClient";
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "@/components/ui/command";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { ChevronDown, CheckIcon } from "lucide-react";
@@ -68,7 +68,7 @@ export default function JobFilters({
   const states = State.getStatesOfCountry("IN");
 
   // Create supabase client at the top level (NOT inside useEffect)
-  const supabase = createClerkSupabaseClient();
+  const supabase = useClerkSupabaseClient();
   const [companies, setCompanies] = useState<string[]>([]);
   const [companySearch, setCompanySearch] = useState("");
   const [companyOpen, setCompanyOpen] = useState(false);

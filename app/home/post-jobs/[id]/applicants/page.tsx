@@ -4,7 +4,7 @@
 
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
-import createClerkSupabaseClient from "@/app/supabase/supabasecClient";
+import { useClerkSupabaseClient } from "@/app/supabase/supabasecClient";
 import { useUser } from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
 import { SquareArrowOutUpRightIcon } from "lucide-react";
@@ -42,7 +42,7 @@ export type ApplicantType = {
 
 export default function ViewApplicantsPage() {
   const { id } = useParams();
-  const client = createClerkSupabaseClient();
+  const client = useClerkSupabaseClient();
   const [applicants, setApplicants] = useState<ApplicantType[]>([]);
   const [loading, setLoading] = useState(true);
   const {user} = useUser()

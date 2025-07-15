@@ -5,7 +5,7 @@ import { Bookmark, MapPin, Building2 } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import React, { useEffect, useMemo, useState } from "react";
 import { useJobs, saveJob, unsaveJob } from "@/lib/jobsapi";
-import  createClerkSupabaseClient from "@/app/supabase/supabasecClient";
+import { useClerkSupabaseClient } from "@/app/supabase/supabasecClient";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Tooltip, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip";
 import JobFilters, { JobFiltersState } from "@/components/shared/Filters";
@@ -29,7 +29,7 @@ export type Job = {
 const Joblist = () => {
   const { user } = useUser();
   const { jobs, loading } = useJobs();
-  const supabase = createClerkSupabaseClient()
+  const supabase = useClerkSupabaseClient();
   const router = useRouter()
   const searchParams = useSearchParams();
   const [savedJobs, setSavedJobs] = useState<number[]>([]);

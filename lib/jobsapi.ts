@@ -1,5 +1,5 @@
 "use client"
-import  createClerkSupabaseClient  from "@/app/supabase/supabasecClient";
+import { useClerkSupabaseClient } from "@/app/supabase/supabasecClient";
 import { useUser } from "@clerk/nextjs";
 import { useEffect, useState } from "react";
 
@@ -9,7 +9,7 @@ export function useJobs() {
   const [jobs, setJobs] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const { user } = useUser();
-  const supabase = createClerkSupabaseClient();
+  const supabase = useClerkSupabaseClient();
 
   // Fetch initial jobs
   const fetchJobs = async () => {
@@ -61,7 +61,7 @@ export function useJobs() {
   return { jobs, loading };
 }
 
-export async function getJobWithCounts(supabase: ReturnType<typeof createClerkSupabaseClient>,jobId: string) {
+export async function getJobWithCounts(supabase: ReturnType<typeof useClerkSupabaseClient>,jobId: string) {
 
   // Fetch the job
   const { data: job, error } = await supabase
@@ -92,7 +92,7 @@ export async function getJobWithCounts(supabase: ReturnType<typeof createClerkSu
 }
 
 
-export async function saveJob(supabase: ReturnType<typeof createClerkSupabaseClient>, userId: string, jobId: number){
+export async function saveJob(supabase: ReturnType<typeof useClerkSupabaseClient>, userId: string, jobId: number){
   const { data, error } = await supabase.from("savedjobs").insert({
     user_id: userId,
     job_id: jobId,
@@ -101,7 +101,7 @@ export async function saveJob(supabase: ReturnType<typeof createClerkSupabaseCli
   return data;
 }
 
-export async function unsaveJob(supabase: ReturnType<typeof createClerkSupabaseClient>, userId: string, jobId: number) {
+export async function unsaveJob(supabase: ReturnType<typeof useClerkSupabaseClient>, userId: string, jobId: number) {
   const { error } = await supabase
     .from("savedjobs")
     .delete()

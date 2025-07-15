@@ -3,12 +3,12 @@ import { Dialog, DialogTitle, DialogContent, DialogHeader, DialogTrigger, Dialog
 import { Button } from '../ui/button'
 import { Textarea } from '../ui/textarea'
 import { useUser } from "@clerk/nextjs"
-import createClerkSupabaseClient from "@/app/supabase/supabasecClient"
+import { useClerkSupabaseClient } from "@/app/supabase/supabasecClient"
 import { useState } from "react"
 
 const WithdrawAppDialog = ({ jobId, onWithdraw }: { jobId: string, onWithdraw: () => void }) => {
   const { user } = useUser();
-  const supabase = createClerkSupabaseClient();
+  const supabase = useClerkSupabaseClient();
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
 

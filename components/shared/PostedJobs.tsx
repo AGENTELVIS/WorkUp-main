@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { useUser } from "@clerk/nextjs";
-import createClerkSupabaseClient from "@/app/supabase/supabasecClient";
+import { useClerkSupabaseClient } from "@/app/supabase/supabasecClient";
 import { useRouter } from "next/navigation";
 import { Badge } from "../ui/badge";
 import ManageJobDropdown from "./ManageJobDropdown";
@@ -10,7 +10,7 @@ import ManageJobDropdown from "./ManageJobDropdown";
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const PostedJobs = () => {
   const { user } = useUser();
-  const supabase = createClerkSupabaseClient();
+  const supabase = useClerkSupabaseClient();
   const [jobs, setJobs] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
